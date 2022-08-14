@@ -318,7 +318,8 @@ class Users(db.Model):
     secret = db.Column(db.String(128))
 
     # CSAW attributes
-    region = db.Column(db.String(2))
+    region = db.Column(db.String(9))
+    brack = db.Column(db.String(13))
 
     # Supplementary attributes
     website = db.Column(db.String(128))
