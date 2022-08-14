@@ -193,7 +193,7 @@ def register():
         name = request.form.get("name", "").strip()
         email_address = request.form.get("email", "").strip().lower()
         password = request.form.get("password", "").strip()
-
+        region = request.form.get("region", "").strip()
         website = request.form.get("website")
         affiliation = request.form.get("affiliation")
         country = request.form.get("country")
@@ -299,7 +299,7 @@ def register():
             )
         else:
             with app.app_context():
-                user = Users(name=name, email=email_address, password=password)
+                user = Users(name=name, email=email_address, password=password, region=region)
 
                 if website:
                     user.website = website

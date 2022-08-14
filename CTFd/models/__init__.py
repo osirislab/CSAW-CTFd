@@ -317,6 +317,9 @@ class Users(db.Model):
     type = db.Column(db.String(80))
     secret = db.Column(db.String(128))
 
+    # CSAW attributes
+    region = db.Column(db.String(2))
+
     # Supplementary attributes
     website = db.Column(db.String(128))
     affiliation = db.Column(db.String(128))

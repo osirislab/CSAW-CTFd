@@ -46,6 +46,14 @@
 						Password used to log into your account
 					</small>
 				</div>
+				<div class="form-group">
+					<b>{{ form.region.label }}</b>
+					{{ form.region(class="form-control", value=region) }}
+					<small class="form-text text-muted">
+						Your region.
+					</small>
+				</div>
+
 				{{ form.nonce() }}
 
 				{{ render_extra_fields(form.extra) }}

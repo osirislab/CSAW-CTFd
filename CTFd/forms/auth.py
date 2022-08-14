@@ -1,4 +1,4 @@
-from wtforms import PasswordField, StringField
+from wtforms import PasswordField, StringField, SelectField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired
 
@@ -17,6 +17,8 @@ def RegistrationForm(*args, **kwargs):
         name = StringField("User Name", validators=[InputRequired()])
         email = EmailField("Email", validators=[InputRequired()])
         password = PasswordField("Password", validators=[InputRequired()])
+        regions = ['AU', 'EA', 'PC', 'TEST']
+        region = SelectField("Region", choices=regions, validators=[InputRequired()])
         submit = SubmitField("Submit")
 
         @property
