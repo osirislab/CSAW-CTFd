@@ -72,14 +72,24 @@ class DynamicValueChallenge(BaseChallenge):
         # It is important that this calculation takes into account floats.
         # Hence this file uses from __future__ import division
         value = (
-            ((challenge.minimum - challenge.initial) / (challenge.decay ** 2))
-            * (solve_count ** 2)
-        ) + challenge.initial
+            challenge.initial
+            / (
+                1
+                + math.exp(
+                    challenge.minimum
+                    * (solve_count - challenge.decay)
+                    / (challenge.decay ** 2)
+                )
+            )
+        ) + challenge.minimum
 
-        value = math.ceil(value)
+        value = math.floor(value)
 
         if value < challenge.minimum:
             value = challenge.minimum
+
+        if value > challenge.initial:
+            value = challenge.initial
 
         challenge.value = value
         db.session.commit()
